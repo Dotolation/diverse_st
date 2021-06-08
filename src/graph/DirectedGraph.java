@@ -24,9 +24,15 @@ public class DirectedGraph<T> extends AbstractGraph<T> {
 	
 	@Override
 	protected void appendEdges(List<? extends AbstractEdge<T>> el, int index) {
-		List<Arc<T>> arcs = (List<Arc<T>>) el;
-		super.appendEdges(arcs, index);
-		updateParentChildMap(arcs, index);
+		try {
+			
+			List<Arc<T>> arcs = (List<Arc<T>>) el;
+			this.updateVerticesSet(el, index);
+			updateParentChildMap(arcs, index);
+			
+		} catch (Exception e) {
+		   System.out.println("Please check if the edges belong to the 'Edge' class.");
+		}
 	}
 	
 	private void updateParentChildMap(List<Arc<T>> el, int index) {
