@@ -3,16 +3,16 @@ package graph;
 import java.util.Arrays;
 import java.util.HashSet;
 
-public class UndirectedEdge<T> extends AbstractEdge<T>{
+public class Edge<T> extends AbstractEdge<T>{
 	
 	public final HashSet<T> vertices;
 	
-	public UndirectedEdge (T v1, T v2, double weight) {
+	public Edge (T v1, T v2, double weight) {
 		super(v1, v2, weight);
 		vertices = new HashSet<>(Arrays.asList(v1,v2));
 	}
 	
-	public UndirectedEdge (T v1, T v2) {
+	public Edge (T v1, T v2) {
 		this(v1, v2, 1.0);
 	}
 
@@ -35,7 +35,7 @@ public class UndirectedEdge<T> extends AbstractEdge<T>{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		UndirectedEdge<T> other = (UndirectedEdge<T>) obj;
+		Edge<T> other = (Edge<T>) obj;
 		if (vertices == null) {
 			if (other.vertices != null)
 				return false;

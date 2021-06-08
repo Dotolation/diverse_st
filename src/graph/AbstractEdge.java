@@ -17,4 +17,40 @@ public abstract class AbstractEdge<T> {
 		this(v1, v2, 1.0);
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((v1 == null) ? 0 : v1.hashCode());
+		result = prime * result + ((v2 == null) ? 0 : v2.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(weight);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		AbstractEdge<T> other = (AbstractEdge<T>) obj;
+		if (v1 == null) {
+			if (other.v1 != null)
+				return false;
+		} else if (!v1.equals(other.v1))
+			return false;
+		if (v2 == null) {
+			if (other.v2 != null)
+				return false;
+		} else if (!v2.equals(other.v2))
+			return false;
+		if (Double.doubleToLongBits(weight) != Double.doubleToLongBits(other.weight))
+			return false;
+		return true;
+	}
+
 }
