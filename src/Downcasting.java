@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.LinkedList;
 
-import graph.Path;
+import graph.unused.Path;
 
 class Parent {   
     String name;   
@@ -42,5 +42,11 @@ public class Downcasting{
         
         print(lol.toString());
         print(hmm.toString());
+        
+        Integer a = 55;
+        Integer b = a + 1;
+        a = 3;
+        System.out.println(a);
+        System.out.println(b);
     }   
 }  

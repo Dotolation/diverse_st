@@ -1,6 +1,8 @@
-package graph;
+package graph.unused;
 
 import java.util.LinkedList;
+
+import graph.Arc;
 
 public class Path<T> {
 	
