@@ -3,7 +3,6 @@ package graph.unused;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 
 import graph.AbstractEdge;
 import graph.AbstractGraph;
@@ -14,18 +13,18 @@ public class UndirectedGraph<T> extends AbstractGraph<T> {
 	private HashMap<T, ArrayList<T>> neighborMap;
 	private HashMap<T, ArrayList<Edge<T>>> edgeMap;
 	
-	public UndirectedGraph(HashSet<T> verticesSet, List<Edge<T>> edgeList) {
+	public UndirectedGraph(HashSet<T> verticesSet, ArrayList<Edge<T>> edgeList) {
 		super(verticesSet, edgeList);
 	}
 	
-	public UndirectedGraph(List<Edge<T>> edgeList) {
+	public UndirectedGraph(ArrayList<Edge<T>> edgeList) {
 		super(edgeList);
 	}
 	
 	@Override
-	protected void appendEdges(List<? extends AbstractEdge<T>> edgeList, int index) {
+	protected void appendEdges(ArrayList<? extends AbstractEdge<T>> edgeList, int index) {
 		try {
-			List<Edge<T>> el = (List<Edge<T>>) edgeList;
+			ArrayList<Edge<T>> el = (ArrayList<Edge<T>>) edgeList;
 			updateNeighborMap(el, index);
 			updateEdgeMap(el, index);
 			this.updateVerticesSet(edgeList, index);
@@ -36,7 +35,7 @@ public class UndirectedGraph<T> extends AbstractGraph<T> {
 		
 	}
 	
-	private void updateNeighborMap(List<Edge<T>> el, int index) {
+	private void updateNeighborMap(ArrayList<Edge<T>> el, int index) {
 		Edge<T> edge = el.get(index);
 		
 		//v1
@@ -49,7 +48,7 @@ public class UndirectedGraph<T> extends AbstractGraph<T> {
 		
 	}
 	
-	private void updateEdgeMap(List<Edge<T>> el, int index) {
+	private void updateEdgeMap(ArrayList<Edge<T>> el, int index) {
 		Edge<T> edge = el.get(index);
 		
 		//v1

@@ -3,7 +3,6 @@ package graph;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 
 public class DirectedGraph<T> extends AbstractGraph<T> {
 	
@@ -14,19 +13,19 @@ public class DirectedGraph<T> extends AbstractGraph<T> {
 	private HashMap<T, ArrayList<Arc<T>>> convergenceMap; 
 	 
 	
-	public DirectedGraph (List<Arc<T>> arcs) {
+	public DirectedGraph (ArrayList<Arc<T>> arcs) {
 		super(arcs);	
 	}
 	
-	public DirectedGraph (HashSet<T> vertices, List<Arc<T>> arcs) {
+	public DirectedGraph (HashSet<T> vertices, ArrayList<Arc<T>> arcs) {
 		super(vertices, arcs);
 	}
 	
 	@Override
-	protected void appendEdges(List<? extends AbstractEdge<T>> el, int index) {
+	protected void appendEdges(ArrayList<? extends AbstractEdge<T>> el, int index) {
 		try {
 			
-			List<Arc<T>> arcs = (List<Arc<T>>) el;
+			ArrayList<Arc<T>> arcs = (ArrayList<Arc<T>>) el;
 			this.updateVerticesSet(el, index);
 			updateParentChildMap(arcs, index);
 			
@@ -35,7 +34,7 @@ public class DirectedGraph<T> extends AbstractGraph<T> {
 		}
 	}
 	
-	private void updateParentChildMap(List<Arc<T>> el, int index) {
+	private void updateParentChildMap(ArrayList<Arc<T>> el, int index) {
 		Arc<T> edge = (Arc<T>) el.get(index);
 		T p = edge.orig();
 		T c = edge.dest();
