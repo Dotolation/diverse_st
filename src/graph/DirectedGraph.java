@@ -1,50 +1,64 @@
 package graph;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 
 public class DirectedGraph<T> extends AbstractGraph<T> {
 	
-	private HashMap<T, ArrayList<T>> parentMap;
-	private HashMap<T, ArrayList<T>> childMap;
+	private HashMap<T, List<T>> parentMap;
+	private HashMap<T, List<T>> childMap;
 	
-	private HashMap<T, ArrayList<Arc<T>>> divergenceMap;
-	private HashMap<T, ArrayList<Arc<T>>> convergenceMap; 
+	private HashMap<T, List<Arc<T>>> divergenceMap;
+	private HashMap<T, List<Arc<T>>> convergenceMap; 
 	 
 	/**
 	 * Create a directed graph from the arcs. 
 	 * 
-	 * @param an Arraylist of the arcs that form the directed graph.
+	 * @param an List of the arcs that form the directed graph.
 	 */
-	public DirectedGraph (ArrayList<Arc<T>> arcs) {
-		super(arcs);	
+	public DirectedGraph (List<Arc<T>> arcs) {
+		this(new HashSet<>(), arcs);	
 	}
 	
 	/**
 	 * Create a directed graph from the arcs and orphan vertices not connected by any edges. 
 	 * 
-	 * @param an Arraylist of the arcs that form the directed graph.
+	 * @param an List of the arcs that form the directed graph.
 	 * @param a Hashset of orphan vertices.
 	 */
-	public DirectedGraph (HashSet<T> vertices, ArrayList<Arc<T>> arcs) {
+	public DirectedGraph (HashSet<T> vertices, List<Arc<T>> arcs) {
 		super(vertices, arcs);
+		parentMap = new HashMap<>();
+		childMap = new HashMap<>();
+		divergenceMap = new HashMap<>();
+		convergenceMap = new HashMap<>();
+		
+		for(int i = 0; i < edgeList.size(); i++) {
+			appendEdges(edgeList, i);
+		}
+	}
+	
+	public DirectedGraph (Arc<T>...arcs) {
+		this(Arrays.asList(arcs));
 	}
 	
 	@Override
-	protected void appendEdges(ArrayList<? extends AbstractEdge<T>> el, int index) {
+	protected void appendEdges(List<? extends AbstractEdge<T>> el, int index) {
 		try {
 			
-			ArrayList<Arc<T>> arcs = (ArrayList<Arc<T>>) el;
+			List<Arc<T>> arcs = (List<Arc<T>>) el;
 			this.updateVerticesSet(el, index);
 			updateParentChildMap(arcs, index);
 			
 		} catch (Exception e) {
-		   System.out.println("Please check if the edges belong to the 'Edge' class.");
+		   System.out.println(e);
 		}
 	}
 	
-	private void updateParentChildMap(ArrayList<Arc<T>> el, int index) {
+	private void updateParentChildMap(List<Arc<T>> el, int index) {
 		Arc<T> edge = (Arc<T>) el.get(index);
 		T p = edge.orig();
 		T c = edge.dest();
@@ -71,9 +85,9 @@ public class DirectedGraph<T> extends AbstractGraph<T> {
 	 * Given a vertex, find all of its parent vertices.  
 	 * 
 	 * @param a Vertex
-	 * @return an ArrayList of the parent vertices
+	 * @return an List of the parent vertices
 	 */
-	public ArrayList<T> getParents(T vertex) {
+	public List<T> getParents(T vertex) {
 		return parentMap.get(vertex);
 	}
 	
@@ -82,18 +96,18 @@ public class DirectedGraph<T> extends AbstractGraph<T> {
 	 * Given a vertex, find all of its parent vertices.  
 	 * 
 	 * @param a Vertex
-	 * @return an ArrayList of the vertices
+	 * @return an List of the vertices
 	 */
-	public ArrayList<T> getChildren(T vertex) {
+	public List<T> getChildren(T vertex) {
 		return childMap.get(vertex);
 	}
 	
-	public ArrayList<Arc<T>> divulgingFrom (T vertex){
+	public List<Arc<T>> divulgingFrom (T vertex){
 		return divergenceMap.get(vertex);
 		
 	}
 	
-	public ArrayList<Arc<T>> convergingTo (T vertex){
+	public List<Arc<T>> convergingTo (T vertex){
 		return convergenceMap.get(vertex);
 	}
 	

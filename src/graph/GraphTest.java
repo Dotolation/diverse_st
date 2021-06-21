@@ -23,15 +23,39 @@ public class GraphTest {
 		Arc<Integer> int1Clone = new Arc<>(5, 7);
 		
 		assert str1.hashCode()==str1Clone.hashCode() : "hashCode Not Equal";
+		assert int1.hashCode()==int1Clone.hashCode() : "Hashcode not equal (int)";
 		
-		HashSet<Arc<String>> hmm = new HashSet<>();
-		hmm.add(str1Clone);
-		hmm.add(str1);
-		hmm.add(new Arc<>("b","a"));
+		HashSet<Arc<String>> strArcSet = new HashSet<>();
+		strArcSet.add(str1Clone);
+		strArcSet.add(str1);
+		strArcSet.add(str1.oppositeArc());
 		
-		assert hmm.size()==2 : "what's the size then?";
+		assert strArcSet.size()==2;
+		
+		//Testing Arcs: String test
+		System.out.println(int1.toString());
+		System.out.println(String.valueOf(int1.oppositeArc()));
 		
 		
+		
+		
+		//Testing Directed Graph
+		
+		DirectedGraph<String> graph1 = new DirectedGraph<>(
+										   new Arc<>("a", "b"),
+										   new Arc<>("b", "c"),
+										   new Arc<>("c", "d"),
+										   new Arc<>("c", "e"),
+										   new Arc<>("b", "f"),
+										   new Arc<>("b", "i"),
+										   new Arc<>("i", "j"),
+										   new Arc<>("j", "c"));
+		
+		System.out.println(graph1);
+		System.out.println(graph1.getParents("c"));
+		System.out.println(graph1.convergingTo("c"));
+		System.out.println(graph1.getChildren("b"));
+		System.out.println(graph1.divulgingFrom("b"));
 		
 		
 		

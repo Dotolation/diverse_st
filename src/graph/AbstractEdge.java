@@ -28,6 +28,11 @@ public abstract class AbstractEdge<T> {
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
+	
+	@Override
+	public String toString() {
+		return String.format("<%s, %s>", v1, v2);
+	}
 
 	@Override
 	public boolean equals(Object obj) {
