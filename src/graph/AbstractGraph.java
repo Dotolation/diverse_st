@@ -11,6 +11,14 @@ public abstract class AbstractGraph<T> {
 	protected ArrayList<? extends AbstractEdge<T>> edgeList;
 
 	
+	
+	/**
+	 * Creates a graph from the edges and vertices.
+	 * Use this constructor if any orphan vertices need to be included.
+	 * 
+	 * @param a HashSet of the vertices.
+	 * @param an Arraylist of the edges. 
+	 */
 	public AbstractGraph(HashSet<T> verticesSet, ArrayList<? extends AbstractEdge<T>> edgeList) {
 		this.verticesSet = verticesSet;
 		this.edgeList = edgeList;
@@ -20,6 +28,12 @@ public abstract class AbstractGraph<T> {
 		}	
 	}
 	
+	
+	/**
+	 * Create a graph just from the edges. 
+	 * 
+	 * @param an Arraylist of the edges that form the graph.
+	 */
 	public AbstractGraph(ArrayList<? extends AbstractEdge<T>> edgeList) {
 		this(new HashSet<T>(), edgeList);
 	}
@@ -32,6 +46,11 @@ public abstract class AbstractGraph<T> {
 		verticesSet.add(edge.v2);
 	}
 	
+	
+	/**
+	 * Gives all the edges in the graph.
+	 * @return an ArrayList of all the edges in the graph.
+	 */
 	public List<? extends AbstractEdge<T>> getEdgeList(){
 		return edgeList;
 	}

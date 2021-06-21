@@ -12,11 +12,21 @@ public class DirectedGraph<T> extends AbstractGraph<T> {
 	private HashMap<T, ArrayList<Arc<T>>> divergenceMap;
 	private HashMap<T, ArrayList<Arc<T>>> convergenceMap; 
 	 
-	
+	/**
+	 * Create a directed graph from the arcs. 
+	 * 
+	 * @param an Arraylist of the arcs that form the directed graph.
+	 */
 	public DirectedGraph (ArrayList<Arc<T>> arcs) {
 		super(arcs);	
 	}
 	
+	/**
+	 * Create a directed graph from the arcs and orphan vertices not connected by any edges. 
+	 * 
+	 * @param an Arraylist of the arcs that form the directed graph.
+	 * @param a Hashset of orphan vertices.
+	 */
 	public DirectedGraph (HashSet<T> vertices, ArrayList<Arc<T>> arcs) {
 		super(vertices, arcs);
 	}
@@ -56,10 +66,24 @@ public class DirectedGraph<T> extends AbstractGraph<T> {
 	}
 	
 	
+	/**
+	 * 
+	 * Given a vertex, find all of its parent vertices.  
+	 * 
+	 * @param a Vertex
+	 * @return an ArrayList of the parent vertices
+	 */
 	public ArrayList<T> getParents(T vertex) {
 		return parentMap.get(vertex);
 	}
 	
+	/**
+	 * 
+	 * Given a vertex, find all of its parent vertices.  
+	 * 
+	 * @param a Vertex
+	 * @return an ArrayList of the vertices
+	 */
 	public ArrayList<T> getChildren(T vertex) {
 		return childMap.get(vertex);
 	}

@@ -7,7 +7,7 @@ import graph.AbstractEdge;
 import graph.Arc;
 import graph.DirectedGraph;
 
-public class Test {
+public class AlgosTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
