@@ -15,7 +15,7 @@ public class AlgosTest {
 		List<Arc<String>> arcList = new ArrayList<>();
 		
 		for (int i=0; i < x; i++) {
-			String xName = "X:" + Integer.toString(i+1) + "¥t"; 
+			String xName = "X:" + Integer.toString(i+1) + "  "; 
 			for(int j=0 ; j < y; j++) {
 				String yName = "Y:" + Integer.toString(j+1);
 				vertexArray[i][j] = xName + yName;
@@ -40,12 +40,11 @@ public class AlgosTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		List<Arc<Integer>> edgeList = Arrays.asList(new Arc<Integer>(1,2), new Arc<Integer>(3,4));
 		
-		//List<AbstractEdge<Integer>> hmm = (List<AbstractEdge<Integer>>) edgeList2;
+		DirectedGraph<String> grid = gridGraph(4,4);
+
+		DirectedGraph<String> grid2 = STPathMany.djikstra(grid, "X:1  Y:1", "X:4  Y:4"); 
 		
-		
-		//DirectedGraph<Integer> testGraph = new DirectedGraph<>(edgeList);
 		
 		//BellmanFord.bellmanFordMany(testGraph, 1, 2);
 

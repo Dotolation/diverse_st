@@ -54,9 +54,31 @@ public abstract class AbstractGraph<T> {
 		StringBuffer buffer = new StringBuffer();
 		for (int i=0; i<edgeList.size() ;i++) {
 			buffer.append(edgeList.get(i));
-			buffer.append(", ");
+			buffer.append("\n");
 		}
 		return buffer.toString();
 	}
 
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		AbstractGraph<T> other = (AbstractGraph<T>) obj;
+		if (edgeList == null) {
+			if (other.edgeList != null)
+				return false;
+		} else if (!edgeList.equals(other.edgeList))
+			return false;
+		if (verticesSet == null) {
+			if (other.verticesSet != null)
+				return false;
+		} else if (!verticesSet.equals(other.verticesSet))
+			return false;
+		return true;
+	}
 }
