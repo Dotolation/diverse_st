@@ -1,8 +1,39 @@
 package graph;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 public class GraphTest {
+	
+	
+	public static DirectedGraph<String> gridGraph(int x, int y){
+		String[][] vertexArray = new String [x][y];
+		List<Arc<String>> arcList = new ArrayList<>();
+		
+		for (int i=0; i < x; i++) {
+			String xName = "X:" + Integer.toString(i+1) + "¥t"; 
+			for(int j=0 ; j < y; j++) {
+				String yName = "Y:" + Integer.toString(j+1);
+				vertexArray[i][j] = xName + yName;
+				
+				if(i>0) {
+					arcList.add(new Arc<>(vertexArray[i-1][j], vertexArray[i][j]));
+				}
+				
+				if(j>0) {
+					arcList.add(new Arc<>(vertexArray[i][j-1], vertexArray[i][j]));
+				}
+				
+				if(i > 0 && j >0) {
+					arcList.add(new Arc<>(vertexArray[i-1][j-1], vertexArray[i][j]));
+				}
+			}
+		}
+		
+		return new DirectedGraph<String>(arcList);
+		
+	}
 	
 	
 
