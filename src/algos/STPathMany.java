@@ -77,6 +77,7 @@ public class STPathMany {
 			}
 		}
 			
+			System.out.println(bestParents);
 			return buildPaths(bestParents, distanceRecord, t);
 		
 	}
@@ -93,6 +94,11 @@ public class STPathMany {
 			
 			T current = verticesQueue.pop();
 			double dist = distanceRecord.get(current);
+			
+			if(bestParents.get(current) == null) {
+				continue;
+			}
+			
 			
 			for(T parent : bestParents.get(current)) {
 				
