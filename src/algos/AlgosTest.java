@@ -34,6 +34,7 @@ public class AlgosTest {
 		
 	}
 	
+	//Includes Diagonals. 
 	public static DirectedGraph<String> gridGraph2(int x, int y){
 		String[][] vertexArray = new String [x][y];
 		List<Arc<String>> arcList = new ArrayList<>();

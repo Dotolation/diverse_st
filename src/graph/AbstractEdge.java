@@ -1,6 +1,6 @@
 package graph;
 
-public abstract class AbstractEdge<T> {
+public abstract class AbstractEdge<T> implements Comparable<AbstractEdge<T>> {
 	
 	public final T v1;
 	public final T v2;
@@ -56,6 +56,18 @@ public abstract class AbstractEdge<T> {
 		if (Double.doubleToLongBits(weight) != Double.doubleToLongBits(other.weight))
 			return false;
 		return true;
+	}
+	
+	@Override
+	public int compareTo(AbstractEdge<T> o) {
+		// TODO Auto-generated method stub
+		if(this.hashCode() == o.hashCode()) {
+			return 0;
+		} else if (this.hashCode() > o.hashCode()) {
+			return 1;
+		}
+		
+		return -1; 
 	}
 
 }

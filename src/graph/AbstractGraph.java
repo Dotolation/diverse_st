@@ -46,6 +46,7 @@ public abstract class AbstractGraph<T> {
 	 * @return an List of all the edges in the graph.
 	 */
 	public List<? extends AbstractEdge<T>> getEdgeList(){
+		this.edgeList.sort(null);
 		return edgeList;
 	}
 	
@@ -69,10 +70,19 @@ public abstract class AbstractGraph<T> {
 		if (getClass() != obj.getClass())
 			return false;
 		AbstractGraph<T> other = (AbstractGraph<T>) obj;
-		if (edgeList == null) {
-			if (other.edgeList != null)
+		
+		if(this.getEdgeList().toString().equals(other.getEdgeList().toString())) {
+			System.out.println("Two EdgeLists are Equal");
+		} else {
+			System.out.println("Two EdgeLists are NOT equal. Printing both lists");
+			System.out.println(this.getEdgeList().toString());
+			System.out.println(other.getEdgeList().toString());
+		}
+		
+		if (this.getEdgeList() == null) {
+			if (other.getEdgeList() != null)
 				return false;
-		} else if (!edgeList.equals(other.edgeList))
+		} else if (!this.getEdgeList().equals(other.getEdgeList()))
 			return false;
 		if (verticesSet == null) {
 			if (other.verticesSet != null)
