@@ -1,4 +1,4 @@
-package simpleGraph;
+package simplegraph;
 
 public class Arc implements Comparable<Arc> {
 	

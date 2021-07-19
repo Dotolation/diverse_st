@@ -1,4 +1,4 @@
-package simpleGraph;
+package simplegraph;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
