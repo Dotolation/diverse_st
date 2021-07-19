@@ -30,7 +30,7 @@ public class STPathMany {
 		while(!verticesQueue.isEmpty()) {
 			
 			T current = verticesQueue.poll();
-			System.out.println(current);
+			//System.out.println(current);
 			
 			//All arcs divulging from the current vertex.
 			List<Arc<T>> childrenArcs = g.divulgingFrom(current);
@@ -38,7 +38,7 @@ public class STPathMany {
 				continue;
 			}
 			
-			System.out.println(childrenArcs);
+			//System.out.println(childrenArcs);
 			
 			for(Arc<T> childArc : childrenArcs) {
 				
@@ -77,7 +77,7 @@ public class STPathMany {
 			}
 		}
 			
-			System.out.println(bestParents);
+			//System.out.println(bestParents);
 			return buildPaths(bestParents, distanceRecord, t);
 		
 	}

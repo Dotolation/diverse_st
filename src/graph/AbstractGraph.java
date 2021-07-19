@@ -71,13 +71,14 @@ public abstract class AbstractGraph<T> {
 			return false;
 		AbstractGraph<T> other = (AbstractGraph<T>) obj;
 		
+		/*
 		if(this.getEdgeList().toString().equals(other.getEdgeList().toString())) {
 			System.out.println("Two EdgeLists are Equal");
 		} else {
 			System.out.println("Two EdgeLists are NOT equal. Printing both lists");
 			System.out.println(this.getEdgeList().toString());
 			System.out.println(other.getEdgeList().toString());
-		}
+		} */
 		
 		if (this.getEdgeList() == null) {
 			if (other.getEdgeList() != null)
