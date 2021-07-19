@@ -66,13 +66,13 @@ public class AlgosTest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		DirectedGraph<String> grid = gridGraph(6,6);
-		DirectedGraph<String> grid2 = STPathMany.djikstra(grid, "X:1  Y:1", "X:6  Y:6"); 
+		DirectedGraph<String> grid = gridGraph(12,12);
+		DirectedGraph<String> grid2 = STPathMany.djikstra(grid, "X:1  Y:1", "X:12  Y:12"); 
 		
 		assert grid.equals(grid2);
 		
-		DirectedGraph<String> gridDiag = gridGraph2(6,6);
-		DirectedGraph<String> gridDiag2 = STPathMany.djikstra(gridDiag, "X:1  Y:1", "X:6  Y:6");
+		DirectedGraph<String> gridDiag = gridGraph2(8,15);
+		DirectedGraph<String> gridDiag2 = STPathMany.djikstra(gridDiag, "X:1  Y:1", "X:8  Y:15");
 		
 		System.out.println(gridDiag2);
 		
