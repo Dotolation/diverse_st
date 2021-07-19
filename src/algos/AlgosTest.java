@@ -34,6 +34,7 @@ public class AlgosTest {
 		
 	}
 	
+	//Includes Diagonals. 
 	public static DirectedGraph<String> gridGraph2(int x, int y){
 		String[][] vertexArray = new String [x][y];
 		List<Arc<String>> arcList = new ArrayList<>();
@@ -53,7 +54,7 @@ public class AlgosTest {
 				}
 				
 				if(i > 0 && j >0) {
-					arcList.add(new Arc<>(vertexArray[i-1][j-1], vertexArray[i][j]));
+					arcList.add(new Arc<>(vertexArray[i-1][j-1], vertexArray[i][j], Math.sqrt(1+1)));
 				}
 			}
 		}
@@ -65,11 +66,15 @@ public class AlgosTest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		DirectedGraph<String> grid = gridGraph(6,6);
-
-		DirectedGraph<String> grid2 = STPathMany.djikstra(grid, "X:1  Y:1", "X:6  Y:6"); 
+		DirectedGraph<String> grid = gridGraph(12,12);
+		DirectedGraph<String> grid2 = STPathMany.djikstra(grid, "X:1  Y:1", "X:12  Y:12"); 
 		
-		System.out.println(grid.equals(grid2));
+		assert grid.equals(grid2);
+		
+		DirectedGraph<String> gridDiag = gridGraph2(8,15);
+		DirectedGraph<String> gridDiag2 = STPathMany.djikstra(gridDiag, "X:1  Y:1", "X:8  Y:15");
+		
+		System.out.println(gridDiag2);
 		
 		
 		//BellmanFord.bellmanFordMany(testGraph, 1, 2);
