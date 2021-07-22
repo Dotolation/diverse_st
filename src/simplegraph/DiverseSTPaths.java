@@ -9,8 +9,6 @@ import java.util.Queue;
 
 public class DiverseSTPaths {
 	
-	
-	
 	/**
 	 * Removes edges that do not form the shortest st-path.
 	 * @param g
@@ -63,24 +61,20 @@ public class DiverseSTPaths {
 		
 		for (Vertex v : g.vertexList) {
 			
-			List<Arc> arcList = v.childArcs;
-			List<Arc> rCopies = new ArrayList<>();
+			if (v.childArcs == null) continue;
 			
+			List<Arc> rCopies = new ArrayList<>();
 			//k-duplication
-			for(int i=1; i <= k; i++) {
-				
-				for(Arc arc : arcList) {
-					
+			for(Arc arc : v.childArcs) {	
+				for(int i=1; i<=k; i++) {
 					int newCost = arc.cost * (k - 2*i + 1);
 					rCopies.add(new Arc(arc.to, arc.capacity, newCost));
-					
 				} 
 			}
 			
 			v.childArcs = rCopies; //replace the edges with the duplicates. 	
 
 		}
-	
 	}
 
 }

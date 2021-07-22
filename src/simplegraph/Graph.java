@@ -16,9 +16,16 @@ public class Graph {
 	public Graph(List<Vertex> vertexList, Vertex start, Vertex end) {
 		
 		this.vertexList = vertexList;
-		
 		this.start = start;
 		this.end = end;
+	
+	}
+	
+	public Graph(List<Vertex> vertexList, Vertex start, Vertex end, boolean vCost) {
+		
+		this(vertexList, start, end);
+		
+		if(vCost) this.vertexCost();
 	
 	}
 	
@@ -52,5 +59,35 @@ public class Graph {
 		}
 		
 	}
+	
+	@Override
+	public String toString() {
+		
+		return start.toString();
+		
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Graph other = (Graph) obj;
+		if (end == null) {
+			if (other.end != null)
+				return false;
+		} else if (!end.equals(other.end))
+			return false;
+		if (start == null) {
+			if (other.start != null)
+				return false;
+		} else if (!start.equals(other.start))
+			return false;
+		return true;
+	}
+
 
 }
