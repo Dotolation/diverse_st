@@ -1,7 +1,7 @@
 package simplegraph;
 
 import java.util.ArrayDeque;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 
@@ -12,10 +12,10 @@ public class DiverseSTPaths {
 	
 	
 	/**
-	 * Removes edges that do not form the shortest st-path, and duplicate each edge r times. 
+	 * Removes edges that do not form the shortest st-path.
 	 * @param g
 	 */
-	public static void preliminary(Graph g) {
+	public static void removeNonStEdges(Graph g) {
 		
 		g.vertexCost();
 		
@@ -51,14 +51,35 @@ public class DiverseSTPaths {
 
 			}
 			
-			/*Duplicate remaining arcs r times. 
-			for(int j=0; j < end; j++) {
-				
-			} 
-			*/
-			
 		}	
 		
+	}
+	
+	/**
+	 * Removes edges that do not form the shortest st-path.
+	 * @param g
+	 */
+	public static void kDuplication (Graph g, int k){
+		
+		for (Vertex v : g.vertexList) {
+			
+			List<Arc> arcList = v.childArcs;
+			List<Arc> rCopies = new ArrayList<>();
+			
+			for(int i=1; i <= k; i++) {
+				
+				for(Arc arc : arcList) {
+					
+					int newCost = arc.cost * (k - 2*i + 1);
+					rCopies.add(new Arc(arc.to, arc.capacity, newCost));
+					
+				} 
+			}
+			
+			arcList.addAll(rCopies);
+
+		}
+	
 	}
 
 }

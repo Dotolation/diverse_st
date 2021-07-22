@@ -5,7 +5,7 @@ import java.util.List;
 public class Vertex {
 	
 	List<Arc> childArcs;
-	double cost;
+	int cost = Integer.MIN_VALUE;
 	
 	
 	Arc before; 

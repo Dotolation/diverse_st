@@ -7,16 +7,16 @@ import java.util.Queue;
 
 //This is a directed graph. 
 public class Graph {
+	
 	public List<Vertex> vertexList;
-	public List<Arc> arcList;
 	
 	public Vertex start;
 	public Vertex end; 
 	
-	public Graph(ArrayList<Vertex> vertexList, ArrayList<Arc> arcList, Vertex start, Vertex end) {
+	public Graph(ArrayList<Vertex> vertexList, Vertex start, Vertex end) {
 		
 		this.vertexList = vertexList;
-		this.arcList= arcList; 
+		
 		this.start = start;
 		this.end = end;
 	
@@ -42,8 +42,8 @@ public class Graph {
 				Vertex next = arc.to;
 				if (next == null) continue; 
 				
-				double costSum = current.cost + arc.cost;
-				next.cost = (next.cost == Double.MIN_VALUE) ? costSum : Math.min(next.cost, costSum);
+				int costSum = current.cost + arc.cost;
+				next.cost = (next.cost == Integer.MIN_VALUE) ? costSum : Math.min(next.cost, costSum);
 				
 				vertexQueue.add(next);
 				
