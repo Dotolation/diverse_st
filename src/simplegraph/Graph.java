@@ -13,7 +13,7 @@ public class Graph {
 	public Vertex start;
 	public Vertex end; 
 	
-	public Graph(ArrayList<Vertex> vertexList, Vertex start, Vertex end) {
+	public Graph(List<Vertex> vertexList, Vertex start, Vertex end) {
 		
 		this.vertexList = vertexList;
 		

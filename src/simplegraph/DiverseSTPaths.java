@@ -66,6 +66,7 @@ public class DiverseSTPaths {
 			List<Arc> arcList = v.childArcs;
 			List<Arc> rCopies = new ArrayList<>();
 			
+			//k-duplication
 			for(int i=1; i <= k; i++) {
 				
 				for(Arc arc : arcList) {
@@ -76,7 +77,7 @@ public class DiverseSTPaths {
 				} 
 			}
 			
-			arcList.addAll(rCopies);
+			v.childArcs = rCopies; //replace the edges with the duplicates. 	
 
 		}
 	
